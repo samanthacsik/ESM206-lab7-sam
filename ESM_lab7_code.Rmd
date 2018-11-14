@@ -42,3 +42,43 @@ get_guns <- gc_df %>%
 rownames(get_guns) <- c("Female", "Male") # change names of table row
 ```
 
+Collaborator (An): doing chi-square  
+- Is there a significant difference in gun control perspectives (as related to access to guns) for males and females?  
+- Is there a significant association between sex and gun control recommendations?  
+- Is perception of gun control access independent of sex?
+
+```{r chi square proportion table}
+# prop.table makes a table of proportions by row
+# make data frame matrix in order to work with prop.table()
+# calculate proportions across rows with ,1
+guns_prop <- prop.table(as.matrix(get_guns), 1)
+
+guns_prop
+```
+
+```{r performing chi square}
+# use chisq.test on contingency table
+guns_x2 <- chisq.test(get_guns)
+
+guns_x2
+```
+H0: sex is independent of gun control perception.  
+HA: sex is non-independent of gun control perception (proportions differ between sexes).
+
+Recommended government action on gun access differs signficantly for males and females ($\chi^2$(`r guns_x2$parameter`) = `r guns_x2$statistic`, p < 0.001.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
