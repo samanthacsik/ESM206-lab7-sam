@@ -1,0 +1,12 @@
+---
+title: "lab-7-seandenny"
+author: "Sean Denny"
+date: "11/14/2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*So we have come to it at last... the great battle of our time.* -Gandalf the White
