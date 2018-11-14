@@ -16,3 +16,29 @@ It's Sam again, and I'm updating some text.
 Ayyyyyyyyyy.
 
 Sean here.
+
+Creator (Sam):
+
+Getting the gc_df.csv data, loading the tidyverse, and getting some summary counts.
+
+```{r}
+# load required packages
+library(tidyverse)
+
+# load data
+gc_df <- read_csv("gc_df.csv")
+
+# QUESTION: Does the sex of the respondent sig effect their perception on ease of gun access; is there a sig. association between sex and perception on guns
+  # 2 categorical variables (sex, perception)
+
+# remove NA values & create contingency table
+get_guns <- gc_df %>% 
+  filter(gender != "NA",
+         make_get_guns != "NA") %>% 
+  count(gender, make_get_guns) %>% # allows you to set groupings for different categorical variables
+  spread(make_get_guns, n) %>% # make into wide format; converts levels within one column so that they now exist in their own columns
+  select(-gender) 
+
+rownames(get_guns) <- c("Female", "Male") # change names of table row
+```
+
